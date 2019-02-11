@@ -1,2 +1,2 @@
 # nOOPeZ
-1st TW game developement
+1st TW game development
