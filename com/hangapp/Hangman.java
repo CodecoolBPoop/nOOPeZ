@@ -1,4 +1,4 @@
-// package com.catchapp;
+// package com.hangapp;
 
 import java.util.Scanner;
 import java.util.Random;
@@ -14,40 +14,51 @@ public class Hangman{
     while (weArePlaying) {
       System.out.println("Welcome to my game.");
       char[] randomWordToGues = guesses[random.nextInt(guesses.length)].toCharArray();
-      int amountOfGuesses = randomWordToGues.length; //100
-      char[] playerGuesses = new char[amountOfGuesses]; // _ _ _ _
+      int lives = 6;
+      char[] playerGuesses = new char[randomWordToGues.length]; // _ _ _ _
 
       for (int i = 0; i < playerGuesses.length; i++){
         playerGuesses[i] = '_';
       }
 
       boolean wordIsGuessed = false;
-      int tries = 0;
 
-      while (!wordIsGuessed && tries != amountOfGuesses){
+      int correctCharsBefore = 0;
+      int correctCharsAfter = 0;
+
+      while (!wordIsGuessed && lives != 0){
         System.out.print("Current guesses: ");
         printArray(playerGuesses);
-        System.out.printf("You have %d tries left.\n", amountOfGuesses - tries);
+        System.out.printf("You have %d lives left.\n", lives);
         System.out.println("Enter a single character");
         char input = scanner.nextLine().charAt(0);
-        tries++;
 
-        if (input == '-') {
-          weArePlaying = false;
-          wordIsGuessed = true;
-        } else {
-          for (int i = 0; i < randomWordToGues.length ; i++){
-            if (Character.toLowerCase(randomWordToGues[i]) == Character.toLowerCase(input)) {
-              playerGuesses[i] = randomWordToGues[i];
-            }
-          }
-          if (isTheWordGuessed(playerGuesses)) {
-            wordIsGuessed = true;
-            System.out.println("Congratulations you won!");
+
+
+        for (int i = 0; i < randomWordToGues.length ; i++){
+          if (Character.toLowerCase(randomWordToGues[i]) == Character.toLowerCase(input)) {
+            playerGuesses[i] = randomWordToGues[i];
+
           }
         }
+        correctCharsAfter = 0;
+        for (int i = 0; i < playerGuesses.length; i++){
+          if (playerGuesses[i] != '_') {
+            correctCharsAfter +=1;
+          }
+        }
+        if (correctCharsAfter == correctCharsBefore) {
+          lives -= 1;
+        }
+        correctCharsBefore = correctCharsAfter;
+
+        if (isTheWordGuessed(playerGuesses)) {
+          wordIsGuessed = true;
+          System.out.println("Congratulations you won!");
+        }
+
       }
-      if (!wordIsGuessed) {
+      if (lives==0) {
         System.out.println("You ran out of guesses. :/");
       }
       System.out.println("Do you want to play again? (yes/no)");
