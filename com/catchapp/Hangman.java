@@ -25,9 +25,9 @@ public class Hangman{
       int tries = 0;
 
       while (!wordIsGuessed && tries != amountOfGuesses){
-        System.out.print("Current guesses");
+        System.out.print("Current guesses: ");
         printArray(playerGuesses);
-        System.out.print("You have %d tries left.\n", amountOfGuesses - tries);
+        System.out.printf("You have %d tries left.\n", amountOfGuesses - tries);
         System.out.println("Enter a single character");
         char input = scanner.nextLine().charAt(0);
         tries++;
@@ -38,10 +38,10 @@ public class Hangman{
         } else {
           for (int i = 0; i < randomWordToGues.length ; i++){
             if (randomWordToGues[i] == input) {
-              playerGuess[i] = input;
+              playerGuesses[i] = input;
             }
           }
-          if (isTheWordGuessed(playerGuess)) {
+          if (isTheWordGuessed(playerGuesses)) {
             wordIsGuessed = true;
             System.out.println("Congratulations you won!");
           }
@@ -61,7 +61,7 @@ public class Hangman{
 
   public static void printArray(char[] array) {
     for (int i = 0; i < array.length; i++){
-      System.out.print(array[i + " "]);
+      System.out.print(array[i] + " ");
     }
     System.out.println();
   }
