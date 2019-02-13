@@ -37,8 +37,8 @@ public class Hangman{
           wordIsGuessed = true;
         } else {
           for (int i = 0; i < randomWordToGues.length ; i++){
-            if (randomWordToGues[i] == input) {
-              playerGuesses[i] = input;
+            if (Character.toLowerCase(randomWordToGues[i]) == Character.toLowerCase(input)) {
+              playerGuesses[i] = randomWordToGues[i];
             }
           }
           if (isTheWordGuessed(playerGuesses)) {
