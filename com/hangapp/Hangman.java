@@ -1,4 +1,4 @@
-// package com.hangapp;
+package com.hangapp;
 
 import java.util.Scanner;
 import java.util.Random;
@@ -8,7 +8,8 @@ public class Hangman{
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     Random random = new Random();
-    String[] guesses = {"Andris", "Laci", "Bence"};
+    // String[] guesses = {"Java", "Oracle", "Sun", "JRE", "Python"};
+    String[] guesses = WordLists.wordList();
 
     boolean weArePlaying = true;
     while (weArePlaying) {
@@ -32,6 +33,8 @@ public class Hangman{
         System.out.printf("You have %d lives left.\n", lives);
         System.out.println("Enter a single character");
         char input = scanner.nextLine().charAt(0);
+
+        System.out.print("\033\143");
 
 
 
