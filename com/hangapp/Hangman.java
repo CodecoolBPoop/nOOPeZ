@@ -13,9 +13,9 @@ public class Hangman{
 
     boolean weArePlaying = true;
     while (weArePlaying) {
-      asciis.mainMenu();
+      asciis.mainMenu(0);
       char[] randomWordToGues = guesses[random.nextInt(guesses.length)].toCharArray();
-      int lives = 6;
+      int lives = 7;
       char[] playerGuesses = new char[randomWordToGues.length]; // _ _ _ _
 
       for (int i = 0; i < playerGuesses.length; i++){
@@ -28,13 +28,14 @@ public class Hangman{
       int correctCharsAfter = 0;
 
       while (!wordIsGuessed && lives != 0){
+        asciis.hangedMan(lives);
         System.out.print("The word: ");
         printArray(playerGuesses);
         System.out.printf("You have %d lives left.\n", lives);
         System.out.print("Enter a single character: ");
         char input = scanner.nextLine().charAt(0);
 
-        asciis.mainMenu();
+        asciis.mainMenu(1);
         // System.out.print("\033\143");
 
         for (int i = 0; i < randomWordToGues.length ; i++){
@@ -64,6 +65,7 @@ public class Hangman{
 
       }
       if (lives==0) {
+        asciis.hangedMan(0);
         System.out.println("You ran out of guesses. :/");
       }
       System.out.println("Do you want to play again? (yes/no)");
