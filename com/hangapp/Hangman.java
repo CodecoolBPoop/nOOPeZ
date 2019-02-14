@@ -10,10 +10,28 @@ public class Hangman{
     Random random = new Random();
     String[] guesses = WordLists.wordList();
     AsciiStrings asciis = new AsciiStrings();
+    boolean inMenu = true;
+    boolean weArePlaying = false;
 
-    boolean weArePlaying = true;
-    while (weArePlaying) {
+    while(inMenu){
       asciis.mainMenu(0);
+      System.out.print("Choose menu option(1-4.): ");
+      char input = scanner.nextLine().charAt(0);
+
+      if (input == '1') {
+        weArePlaying = true;
+        inMenu = false;
+      }
+      else if (input == '2') {
+
+      }
+
+    }
+
+
+
+    while (weArePlaying) {
+      asciis.mainMenu(1);
       char[] randomWordToGues = guesses[random.nextInt(guesses.length)].toCharArray();
       int lives = 7;
       char[] playerGuesses = new char[randomWordToGues.length]; // _ _ _ _

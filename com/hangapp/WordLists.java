@@ -8,7 +8,6 @@ public class WordLists{
                         "Object",
                         "Constructor",
                         "Definition",
-                        "Garbage Collection",
                         "Instantiate",
                         "Method",
                         "Primitive",
