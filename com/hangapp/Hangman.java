@@ -12,22 +12,25 @@ public class Hangman{
     AsciiStrings asciis = new AsciiStrings();
     boolean inMenu = true;
     boolean weArePlaying = false;
-
+    asciis.mainMenu(0);
+    int k= 0;
     while(inMenu){
-      asciis.mainMenu(0);
-      System.out.print("Choose menu option(1-4.): ");
+      System.out.print("Choose menu option(1-2.): ");
       char input = scanner.nextLine().charAt(0);
 
       if (input == '1') {
         weArePlaying = true;
         inMenu = false;
-      }
-      else if (input == '2') {
-
+      } else if (input == '2') {
+        weArePlaying = false;
+        asciis.mainMenu(0);
+        inMenu = false;
+      } else {
+        asciis.mainMenu(0);
+        System.out.println("Invalid input");
       }
 
     }
-
 
 
     while (weArePlaying) {
@@ -35,6 +38,7 @@ public class Hangman{
       char[] randomWordToGues = guesses[random.nextInt(guesses.length)].toCharArray();
       int lives = 7;
       char[] playerGuesses = new char[randomWordToGues.length]; // _ _ _ _
+      char[] wrongGuesses = new char[65];
 
       for (int i = 0; i < playerGuesses.length; i++){
         playerGuesses[i] = '_';
@@ -49,6 +53,7 @@ public class Hangman{
         asciis.hangedMan(lives);
         System.out.print("The word: ");
         printArray(playerGuesses);
+        // printArray(wrongGuesses);
         System.out.printf("You have %d lives left.\n", lives);
         System.out.print("Enter a single character: ");
         char input = scanner.nextLine().charAt(0);
@@ -62,6 +67,11 @@ public class Hangman{
 
           }
         }
+        // if (!randomWordToGues.contains(Character.toLowerCase(input))){
+        //   wrongGuesses[k] = Character.toLowerCase(input);
+        //   k++;
+        // }
+
         correctCharsAfter = 0;
         for (int i = 0; i < playerGuesses.length; i++){
           if (playerGuesses[i] != '_') {
@@ -84,14 +94,18 @@ public class Hangman{
       }
       if (lives==0) {
         asciis.hangedMan(0);
-        System.out.println("You ran out of guesses. :/");
+        System.out.println("You ran out of guesses. :/\n");
       }
-      System.out.println("Do you want to play again? (yes/no)");
+      System.out.println("Do you want to play again?");
+      System.out.println("Type 'q' to quit");
+      System.out.println("or any other character to play again:");
       String anotherGame = scanner.nextLine();
-      if (anotherGame.equals("no")) weArePlaying = false;
+      if (anotherGame.equals("q")){
+        weArePlaying = false;
+     }
     }
 
-    System.out.println("Game over.");
+    System.out.println("You coward!");
 
   }
 

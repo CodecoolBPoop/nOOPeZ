@@ -24,9 +24,9 @@ public class AsciiStrings{
      "                                                                        g:::::g\n" +
      "                                                            gggggg      g:::::g             ______\n" +
      "            1. New game                                     g:::::gg   gg:::::g            |/     |      Created by:\n" +
-     "            2. Difficulty                                    g::::::ggg:::::::g            |      @       Miki\n" +
-     "            3. Help/How to play                                gg:::::::::::::g            |     /|\\      Kristóf\n" +
-     "            4. Quit                                              ggg::::::gggg             |      |       Taki\n" +
+     "            2. Quit                                          g::::::ggg:::::::g            |      @       Miki\n" +
+     "                                                               gg:::::::::::::g            |     /|\\      Kristóf\n" +
+     "                                                                 ggg::::::gggg             |      |       Taki\n" +
      "                                                                    gggggg                 |     / \\\n" +
      "                                                                                        ___|___\n\n");
      menu[1] =
