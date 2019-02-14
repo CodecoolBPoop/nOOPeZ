@@ -8,12 +8,12 @@ public class Hangman{
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     Random random = new Random();
-    // String[] guesses = {"Java", "Oracle", "Sun", "JRE", "Python"};
     String[] guesses = WordLists.wordList();
+    AsciiStrings asciis = new AsciiStrings();
 
     boolean weArePlaying = true;
     while (weArePlaying) {
-      System.out.println("Welcome to my game.");
+      asciis.mainMenu();
       char[] randomWordToGues = guesses[random.nextInt(guesses.length)].toCharArray();
       int lives = 6;
       char[] playerGuesses = new char[randomWordToGues.length]; // _ _ _ _
@@ -28,15 +28,14 @@ public class Hangman{
       int correctCharsAfter = 0;
 
       while (!wordIsGuessed && lives != 0){
-        System.out.print("Current guesses: ");
+        System.out.print("The word: ");
         printArray(playerGuesses);
         System.out.printf("You have %d lives left.\n", lives);
-        System.out.println("Enter a single character");
+        System.out.print("Enter a single character: ");
         char input = scanner.nextLine().charAt(0);
 
-        System.out.print("\033\143");
-
-
+        asciis.mainMenu();
+        // System.out.print("\033\143");
 
         for (int i = 0; i < randomWordToGues.length ; i++){
           if (Character.toLowerCase(randomWordToGues[i]) == Character.toLowerCase(input)) {
@@ -57,7 +56,10 @@ public class Hangman{
 
         if (isTheWordGuessed(playerGuesses)) {
           wordIsGuessed = true;
-          System.out.println("Congratulations you won!");
+          System.out.println("Congratulations you won!\n");
+          System.out.print("The solution was: ");
+          printArray(playerGuesses);
+          System.out.println("");
         }
 
       }
