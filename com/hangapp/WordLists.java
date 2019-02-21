@@ -1,8 +1,8 @@
 package com.hangapp;
 
 public class WordLists{
+    /** Contains some Java related words for guesses.*/
   public static String[] wordList() {
-    // String[] guesses = {"Andris", "Laci", "Bence"};
     return new String[]{"Assign",
                         "Class",
                         "Object",

@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"com.hangapp","l":"AsciiStrings"},{"p":"com.hangapp","l":"Hangman"},{"p":"com.hangapp","l":"WordLists"}]

@@ -5,13 +5,16 @@ import java.util.Random;
 
 
 public class Hangman{
+  /** Classic Hangman Game.*/
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     Random random = new Random();
+    /** Picks a random choice from the wordlist.*/
     String[] guesses = WordLists.wordList();
     AsciiStrings asciis = new AsciiStrings();
     boolean inMenu = true;
     boolean weArePlaying = false;
+    /** Main menu starst here*/
     asciis.mainMenu(0);
     int k= 0;
     while(inMenu){
@@ -31,13 +34,12 @@ public class Hangman{
       }
 
     }
-
-
+    /** Swithc up the '_' charachter with the guessed letter.*/
     while (weArePlaying) {
       asciis.mainMenu(1);
       char[] randomWordToGues = guesses[random.nextInt(guesses.length)].toCharArray();
       int lives = 7;
-      char[] playerGuesses = new char[randomWordToGues.length]; // _ _ _ _
+      char[] playerGuesses = new char[randomWordToGues.length];
       char[] wrongGuesses = new char[65];
 
       for (int i = 0; i < playerGuesses.length; i++){
@@ -53,13 +55,11 @@ public class Hangman{
         asciis.hangedMan(lives);
         System.out.print("The word: ");
         printArray(playerGuesses);
-        // printArray(wrongGuesses);
         System.out.printf("You have %d lives left.\n", lives);
         System.out.print("Enter a single character: ");
         char input = scanner.nextLine().charAt(0);
 
         asciis.mainMenu(1);
-        // System.out.print("\033\143");
 
         for (int i = 0; i < randomWordToGues.length ; i++){
           if (Character.toLowerCase(randomWordToGues[i]) == Character.toLowerCase(input)) {
@@ -67,10 +67,6 @@ public class Hangman{
 
           }
         }
-        // if (!randomWordToGues.contains(Character.toLowerCase(input))){
-        //   wrongGuesses[k] = Character.toLowerCase(input);
-        //   k++;
-        // }
 
         correctCharsAfter = 0;
         for (int i = 0; i < playerGuesses.length; i++){
@@ -116,6 +112,7 @@ public class Hangman{
     System.out.println();
   }
 
+  /** If the word guessed, print the word onto console*/
   public static boolean isTheWordGuessed(char[] array) {
     for (int i = 0; i < array.length; i++){
       if (array[i] == '_') return false;
